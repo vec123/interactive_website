@@ -65,10 +65,12 @@ q_log_sigma = latent_X.q_log_sigma.detach().numpy()
 
 # Save q_mu if not exists
 # q_mu_path = "../client/public/q_mu.json"
+""" 
 q_mu_path = os.path.join(os.path.dirname(__file__), "../client/public/q_mu.json")
 if not os.path.exists(q_mu_path):
     with open(q_mu_path, "w") as f:
         json.dump(q_mu.tolist(), f)
+"""
 
 # Load joints and edges
 joints = amc_helpers.parse_asf(base_path + "/01.asf")
