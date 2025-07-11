@@ -10,7 +10,6 @@ __pycache__/
 # Git and metadata
 .git
 .gitignore
-Dockerfile
 docker-compose.yml
 
 # OS files
