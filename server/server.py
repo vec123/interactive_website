@@ -9,6 +9,7 @@ import numpy as np
 from pydantic import BaseModel
 
 # Import your utils and model code
+sys.path.append(os.path.join(os.path.dirname(__file__)))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
 import utils.models.models as models
 import utils.amc_motion_data_helper as amc_helpers
