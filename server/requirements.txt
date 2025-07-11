@@ -7,3 +7,4 @@ matplotlib
 transforms3d
 opencv-python
 gpytorch
+tqdm
