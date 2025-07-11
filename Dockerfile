@@ -23,10 +23,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY server/ ./server
 
 # Copy GP model files
-COPY GP_models ./GP_models
+COPY server/GP_models ./GP_models
 
 # Copy .asf and .amc files
-COPY 01.asf 01_01.amc ./
+COPY server/01.asf 01_01.amc ./
 
 # Copy frontend build
 COPY --from=frontend-builder /app/client/dist ./client/dist
