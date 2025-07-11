@@ -1,20 +1,29 @@
-# Use a minimal Python image
+# Build stage for frontend
+FROM node:18 as frontend-builder
+
+WORKDIR /app
+
+COPY client/package*.json ./client/
+RUN cd client && npm ci
+
+COPY client ./client
+RUN cd client && npm run build
+
+# Backend stage
 FROM python:3.9-slim
 
 WORKDIR /app
 
-# Install Python dependencies
+# Install backend dependencies
 COPY server/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy server code
+# Copy backend code
 COPY server/ ./server
 
-# Copy frontend build
-COPY client/dist ./client/dist
+# Copy built frontend from previous stage
+COPY --from=frontend-builder /app/client/dist ./client/dist
 
-# Expose port
 EXPOSE 8000
 
-# Start server
 CMD ["uvicorn", "server.server:app", "--host", "0.0.0.0", "--port", "8000"]
