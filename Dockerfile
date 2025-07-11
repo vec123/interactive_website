@@ -8,6 +8,12 @@ RUN cd client && npm run build
 
 # Backend
 FROM python:3.9-slim
+
+# Install system dependencies (libGL for OpenCV)
+RUN apt-get update && apt-get install -y \
+    libgl1 \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Install Python dependencies
