@@ -26,7 +26,7 @@ COPY server/ ./server
 COPY server/GP_models ./GP_models
 
 # Copy .asf and .amc files
-COPY server/01.asf 01_01.amc ./
+COPY server/01.asf server/01_01.amc ./
 
 # Copy frontend build
 COPY --from=frontend-builder /app/client/dist ./client/dist
