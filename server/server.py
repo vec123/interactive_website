@@ -95,8 +95,8 @@ def generate_skeleton(data: LatentVector):
 
 
 # 📢 Serve index.html for all other paths (so React router works)
-print("Frontend dist exists:", os.path.exists(frontend_path))
-print("Contents of dist:", os.listdir(frontend_path) if os.path.exists(frontend_path) else "MISSING")
+print("Serving frontend from:", frontend_path)
+print("Exists?", os.path.exists(frontend_path))
 
 app.mount("/", StaticFiles(directory=frontend_path, html=True), name="static")
 

@@ -3,4 +3,8 @@ uvicorn
 torch
 numpy
 pydantic
+matplotlib
+transforms3d
+tqdm
+opencv-python-headless
 gpytorch
