@@ -30,8 +30,6 @@ app.add_middleware(
 
 
 # 📢 Mount the static frontend build
-frontend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../client/dist"))
-print("Serving frontend from:", frontend_path)
 
 @app.get("/ping")
 def ping():
@@ -41,6 +39,10 @@ def ping():
 #base_path = "."
 #model_dir = os.path.join(base_path, "GP_models/cmu_data_latent_GP_model_several_motions/")
 base_path = os.path.dirname(__file__)
+
+frontend_path = os.path.abspath( base_path, "../client/dist" )
+print("Serving frontend from:", frontend_path)
+
 model_dir = os.path.join(base_path, "GP_models/cmu_data_latent_GP_model_several_motions/")
 with open(os.path.join(model_dir, "data_dict.json"), "r") as json_file:
     loaded_dict = json.load(json_file)
