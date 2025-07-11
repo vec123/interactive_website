@@ -1,26 +1,22 @@
-# flyctl launch added from client\.gitignore
-# Logs
-client\**\logs
-client\**\*.log
-client\**\npm-debug.log*
-client\**\yarn-debug.log*
-client\**\yarn-error.log*
-client\**\pnpm-debug.log*
-client\**\lerna-debug.log*
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-client\**\node_modules
-client\**\dist
-client\**\dist-ssr
-client\**\*.local
+# Node modules
+**/node_modules
 
-# Editor directories and files
-client\**\.vscode\*
-!client\**\.vscode\extensions.json
-client\**\.idea
-client\**\.DS_Store
-client\**\*.suo
-client\**\*.ntvs*
-client\**\*.njsproj
-client\**\*.sln
-client\**\*.sw?
-fly.toml
+# Git and other metadata
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+
+# Build output
+**/dist
+**/build
+
+# OS files
+.DS_Store
+Thumbs.db
