@@ -1,8 +1,21 @@
 {
   "build": {
-    "command": "pip install -r requirements.txt && cd client && npm ci && npm run build"
+    "builder": "nixpacks",
+    "nixpacksConfig": {
+      "phases": {
+        "install": {
+          "cmds": [
+            "pip install -r server/requirements.txt",
+            "cd client && npm ci"
+          ]
+        },
+        "build": {
+          "cmds": [
+            "cd client && npm run build"
+          ]
+        }
+      }
+    }
   },
-  "start": {
-    "command": "uvicorn server.server:app --host 0.0.0.0 --port $PORT"
-  }
+  "start": "uvicorn server.server:app --host 0.0.0.0 --port $PORT"
 }
