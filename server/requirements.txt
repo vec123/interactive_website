@@ -2,10 +2,8 @@ fastapi
 uvicorn
 torch
 numpy
-pydantic
+pydantic<2.1.0
 matplotlib
 transforms3d
-mpl_toolkits
-cv2
-shutil
+opencv-python
 gpytorch
