@@ -38,9 +38,10 @@ def ping():
     return {"message": "pong"}
 
 # Load model on startup
-base_path = "."
+#base_path = "."
 #model_dir = os.path.join(base_path, "GP_models/cmu_data_latent_GP_model_several_motions/")
-model_dir = os.path.join(os.path.dirname(__file__), "GP_models/cmu_data_latent_GP_model_several_motions/")
+base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+model_dir = os.path.join(base_path, "GP_models/cmu_data_latent_GP_model_several_motions/")
 with open(os.path.join(model_dir, "data_dict.json"), "r") as json_file:
     loaded_dict = json.load(json_file)
 
