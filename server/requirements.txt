@@ -8,3 +8,4 @@ transforms3d
 mpl_toolkits
 cv2
 shutil
+gpytorch
