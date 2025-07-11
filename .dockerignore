@@ -7,15 +7,11 @@ __pycache__/
 # Node modules
 **/node_modules
 
-# Git and other metadata
+# Git and metadata
 .git
 .gitignore
 Dockerfile
 docker-compose.yml
-
-# Build output
-**/dist
-**/build
 
 # OS files
 .DS_Store
