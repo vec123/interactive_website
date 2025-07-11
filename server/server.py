@@ -40,7 +40,7 @@ def ping():
 #model_dir = os.path.join(base_path, "GP_models/cmu_data_latent_GP_model_several_motions/")
 base_path = os.path.dirname(__file__)
 
-frontend_path = os.path.abspath( base_path, "../client/dist" )
+frontend_path = os.path.join( base_path, "../client/dist" )
 print("Serving frontend from:", frontend_path)
 
 model_dir = os.path.join(base_path, "GP_models/cmu_data_latent_GP_model_several_motions/")
