@@ -1,4 +1,8 @@
 {
-  "build": "pip install -r requirements.txt && cd client && npm ci && npm run build",
-  "start": "uvicorn server.server:app --host 0.0.0.0 --port $PORT"
+  "build": {
+    "command": "pip install -r requirements.txt && cd client && npm ci && npm run build"
+  },
+  "start": {
+    "command": "uvicorn server.server:app --host 0.0.0.0 --port $PORT"
+  }
 }
