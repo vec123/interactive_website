@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GPLVMMethodDescription from "./GPLVM";
 import WVAEMethodDescription from "./WassersteinVAE";
+import GPLVMLatentExplorer from "./GPLVMLatentExplorer";
 import "katex/dist/katex.min.css";
 import "./styles/ContentStyles.css";
 
@@ -47,10 +48,15 @@ export default function App() {
       </nav>
 
       {/* Content */}
-      <div>
-        {activeTab === "GPLVM" && <GPLVMMethodDescription />}
-        {activeTab === "WassersteinVAE" && <WVAEMethodDescription />}
-      </div>
+        <div>
+      {activeTab === "GPLVM" && (
+        <>
+          <GPLVMMethodDescription />
+          <GPLVMLatentExplorer />
+        </>
+      )}
+      {activeTab === "WassersteinVAE" && <WVAEMethodDescription />}
+    </div>
     </div>
   );
 }
