@@ -4,7 +4,7 @@ import "./styles/ContentStyles.css";
 
 export default function WVAEMethodDescription() {
   return (
-    <div className="method-container">
+    <div style={{ padding: "1rem" }}>
       <h2>
         About the Method: Variational Autoencoder with Optimal Transport Reconstruction Loss
       </h2>
