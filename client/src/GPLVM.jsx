@@ -11,7 +11,7 @@ export default function GPLVMMethodDescription() {
         Our exploration focuses on <strong>Gaussian Process Latent Variable Models (GPLVMs)</strong>, 
         which extend GPs to learn low-dimensional representations of high-dimensional data.
         Our data will be a sequence of motion frames, where each frame is a 36 dimensional vector (i.e. 12 joints, 3 coordinates).
-        Gaussian Processes are cool because they allow building non-parametric model and doing principled inference on functions directly from observations. 
+        Gaussian Processes are cool because they allow building non-parametric models (well, actually, by default each sample introduces parameters) and doing principled inference on functions directly from observations. 
         This makes them flexible models with many applications, among which, data-imputation, dimensionality reduction, GP state space models and more.
         A downside is their computational complexity, which scales cubically with the number of data points.
         Methods which scale better include sparse approximations, inducing points, and variational inference techniques.
