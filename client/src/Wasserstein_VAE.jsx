@@ -64,14 +64,15 @@ export default function WVAEMethodDescription() {
       <h3 style={{ textAlign: "center" }}>The Sinkhorn Algorithm</h3>
       <p>
         Computing the exact Wasserstein distance requires solving a linear program, which is computationally expensive.
-        The <strong>Sinkhorn algorithm</strong> provides an efficient approximation by introducing entropy regularization:
+        The <strong>Sinkhorn algorithm</strong> provides an efficient approximation by introducing entropy regularization, 
+        which turns the optimal transport problem from a linear to a convex optimization problem:
       </p>
       <BlockMath math={"W_{\\varepsilon}(\\mu, \\nu) = \\inf_{\\gamma \\in \\Pi(\\mu, \\nu)} \\int \\|x - y\\| \\, d\\gamma(x,y) - \\varepsilon \\, H(\\gamma)"} />
       <p>
         where <InlineMath math={"H(\\gamma) = - \\int \\log \\gamma(x,y) \\, d\\gamma(x,y)"} /> is the entropy of the transport plan.
       </p>
       <p>
-        In this formulation, the optimal plan <InlineMath math={"\\gamma^*"} /> is expressed implicitly through two potential functions
+        In this formulation, the optimal plan <InlineMath math={"\\gamma^*"} /> is expressed implicitly through two potential functions which arise from the dual formulation: 
         <InlineMath math={"u(x)"} /> and <InlineMath math={"v(y)"} />:
       </p>
       <BlockMath math={"\\gamma^*(x,y) = \\exp\\left( \\frac{u(x) + v(y) - c(x,y)}{\\varepsilon} \\right)"} />
@@ -80,7 +81,7 @@ export default function WVAEMethodDescription() {
       </p>
       <p>
         These potentials are iteratively updated by a scaling procedure that alternates normalizing over rows and columns of
-        the transport matrix.
+        the transport matrix. Other approaches directly learn the potentials between two distributions as neural networks, using the Sinkhorn algorithm to guide training.
       </p>
 
       <h3 style={{ textAlign: "center" }}>Variational Autoencoder with Wasserstein (Sinkhorn) Reconstruction Loss</h3>
@@ -100,7 +101,7 @@ export default function WVAEMethodDescription() {
         <InlineMath math={"P_t"} /> defines a geodesic in Wasserstein space.
       </p>
       <p>
-        Consequently, latent interpolations between two samples decode to realistic intermediate shapes obtained by progressively
+        Consequently, latent interpolations between two samples decode to realistic intermediate shapes, so called Wasserstein barycenters, obtained by progressively
         transporting mass rather than blending intensities.
       </p>
       <p>
