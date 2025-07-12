@@ -3,93 +3,102 @@ import { BlockMath, InlineMath } from "react-katex";
 
 export default function WVAEMethodDescription() {
   return (
-    <div style={{ textAlign: "center", maxWidth: "900px", margin: "0 auto" }}>
-      <h2>About the Method: Variational Autoencoder with Sinkhorn Reconstruction Loss</h2>
-      
+    <div
+      style={{
+        textAlign: "center",
+        maxWidth: "900px",
+        margin: "0 auto",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h2 style={{ textAlign: "center" }}>
+        About the Method: Variational Autoencoder with Sinkhorn Reconstruction Loss
+      </h2>
+
       <p>
-        A <strong>Variational Autoencoder (VAE)</strong> is a probabilistic generative model 
-        that learns to encode data into a latent space and reconstruct it back to the observed space. 
+        A <strong>Variational Autoencoder (VAE)</strong> is a probabilistic generative model
+        that learns to encode data into a latent space and reconstruct it back to the observed space.
         Formally, a VAE models the data likelihood as:
       </p>
-      <BlockMath math={`p(x) = \\int p(x|z) \\, p(z) \\, dz`} />
+      <BlockMath math={"p(x) = \\int p(x|z) \\, p(z) \\, dz"} />
       <p>
-        where <InlineMath math="z"/> is a latent variable sampled from a prior, typically 
-        <InlineMath math="\\mathcal{N}(0, I)"/>, and <InlineMath math="p(x|z)"/> is the decoder likelihood.
+        where <InlineMath math={"z"} /> is a latent variable sampled from a prior, typically
+        <InlineMath math={"\\mathcal{N}(0, I)"} />, and <InlineMath math={"p(x|z)"} /> is the decoder likelihood.
       </p>
-      
+
       <p>
         To train the model, the Evidence Lower Bound (ELBO) is maximized:
       </p>
-      <BlockMath math={`\\text{ELBO} = \\mathbb{E}_{q(z|x)} \\big[ \\log p(x|z) \\big] - \\mathrm{KL}\\big( q(z|x) \\| p(z) \\big)`} />
+      <BlockMath math={"\\text{ELBO} = \\mathbb{E}_{q(z|x)} \\big[ \\log p(x|z) \\big] - \\mathrm{KL}\\big( q(z|x) \\| p(z) \\big)"} />
       <p>
         The <strong>reconstruction loss</strong> in most VAEs is the Mean Squared Error (MSE):
       </p>
-      <BlockMath math={`\\mathcal{L}_{\\text{rec}} = \\| x - \\hat{x} \\|_2^2`} />
+      <BlockMath math={"\\mathcal{L}_{\\text{rec}} = \\| x - \\hat{x} \\|_2^2"} />
       <p>
         This loss penalizes pointwise Euclidean deviations between the input and reconstruction.
         As a result, when interpolating between latent encodings of two training samples, the decoder will produce outputs that
         are linear blends of the original shapes in Euclidean space.
       </p>
       <p>
-        For example, interpolating between a Gaussian blob and a non-Gaussian lumpy shape will yield reconstructions that look 
+        For example, interpolating between a Gaussian blob and a non-Gaussian lumpy shape will yield reconstructions that look
         like blurred mixtures rather than natural morphings.
       </p>
-      
-      <h3>Wasserstein Distance: A Geometric Measure</h3>
+
+      <h3 style={{ textAlign: "center" }}>Wasserstein Distance: A Geometric Measure</h3>
       <p>
         The <strong>Wasserstein distance</strong>, in contrast, measures the minimal cost to transport mass from one distribution to another.
         This makes it sensitive to the geometry and support of the distributions.
       </p>
       <p>
-        Given two probability measures <InlineMath math="\\mu"/> and <InlineMath math="\\nu"/>, the p-Wasserstein distance is defined as:
+        Given two probability measures <InlineMath math={"\\mu"} /> and <InlineMath math={"\\nu"} />, the p-Wasserstein distance is defined as:
       </p>
-      <BlockMath math={`W_p(\\mu, \\nu) = \\left( \\inf_{\\gamma \\in \\Pi(\\mu, \\nu)} \\int \\|x - y\\|^p d\\gamma(x,y) \\right)^{1/p}`} />
+      <BlockMath math={"W_p(\\mu, \\nu) = \\left( \\inf_{\\gamma \\in \\Pi(\\mu, \\nu)} \\int \\|x - y\\|^p \\, d\\gamma(x,y) \\right)^{1/p}"} />
       <p>
-        where <InlineMath math="\\Pi(\\mu, \\nu)"/> denotes all couplings (transport plans) between <InlineMath math="\\mu"/> and <InlineMath math="\\nu"/>.
+        where <InlineMath math={"\\Pi(\\mu, \\nu)"} /> denotes all couplings (transport plans) between <InlineMath math={"\\mu"} /> and <InlineMath math={"\\nu"} />.
       </p>
       <p>
         Unlike Euclidean MSE, interpolating distributions along the Wasserstein geodesic leads to natural displacement of mass.
-        For example, the interpolation between a Gaussian and a non-Gaussian bump would yield intermediate distributions where the mass 
+        For example, the interpolation between a Gaussian and a non-Gaussian bump would yield intermediate distributions where the mass
         gradually shifts, rather than simply blending pixel intensities.
       </p>
-      
-      <h3>The Sinkhorn Algorithm</h3>
+
+      <h3 style={{ textAlign: "center" }}>The Sinkhorn Algorithm</h3>
       <p>
         Computing the exact Wasserstein distance requires solving a linear program, which is computationally expensive.
         The <strong>Sinkhorn algorithm</strong> provides an efficient approximation by introducing entropy regularization:
       </p>
-      <BlockMath math={`W_{\\varepsilon}(\\mu, \\nu) = \\inf_{\\gamma \\in \\Pi(\\mu, \\nu)} \\int \\|x - y\\| d\\gamma(x,y) - \\varepsilon H(\\gamma)`} />
+      <BlockMath math={"W_{\\varepsilon}(\\mu, \\nu) = \\inf_{\\gamma \\in \\Pi(\\mu, \\nu)} \\int \\|x - y\\| \\, d\\gamma(x,y) - \\varepsilon \\, H(\\gamma)"} />
       <p>
-        where <InlineMath math="H(\\gamma) = - \\int \\log \\gamma(x,y) \\, d\\gamma(x,y)"/> is the entropy of the transport plan.
+        where <InlineMath math={"H(\\gamma) = - \\int \\log \\gamma(x,y) \\, d\\gamma(x,y)"} /> is the entropy of the transport plan.
       </p>
       <p>
-        In this formulation, the optimal plan <InlineMath math="\\gamma^*"/> is expressed implicitly through two potential functions 
-        <InlineMath math="u(x)"/> and <InlineMath math="v(y)"/>:
+        In this formulation, the optimal plan <InlineMath math={"\\gamma^*"} /> is expressed implicitly through two potential functions
+        <InlineMath math={"u(x)"} /> and <InlineMath math={"v(y)"} />:
       </p>
-      <BlockMath math={`\\gamma^*(x,y) = \\exp\\left( \\frac{u(x) + v(y) - c(x,y)}{\\varepsilon} \\right)`} />
+      <BlockMath math={"\\gamma^*(x,y) = \\exp\\left( \\frac{u(x) + v(y) - c(x,y)}{\\varepsilon} \\right)"} />
       <p>
-        where <InlineMath math="c(x,y) = \\|x - y\\|"/> is the cost function.
+        where <InlineMath math={"c(x,y) = \\|x - y\\|"} /> is the cost function.
       </p>
       <p>
-        These potentials are iteratively updated by a scaling procedure that alternates normalizing over rows and columns of 
+        These potentials are iteratively updated by a scaling procedure that alternates normalizing over rows and columns of
         the transport matrix.
       </p>
-      
-      <h3>Variational Autoencoder with Wasserstein (Sinkhorn) Reconstruction Loss</h3>
+
+      <h3 style={{ textAlign: "center" }}>Variational Autoencoder with Wasserstein (Sinkhorn) Reconstruction Loss</h3>
       <p>
-        In our method, we replace the standard MSE reconstruction loss by a <strong>Sinkhorn Wasserstein distance</strong> between the 
+        In our method, we replace the standard MSE reconstruction loss by a <strong>Sinkhorn Wasserstein distance</strong> between the
         input data and the reconstructed output:
       </p>
-      <BlockMath math={`\\mathcal{L}_{\\text{rec}} = W_{\\varepsilon}(x, \\hat{x})`} />
+      <BlockMath math={"\\mathcal{L}_{\\text{rec}} = W_{\\varepsilon}(x, \\hat{x})"} />
       <p>
         This changes the behavior of the learned latent space.
         Whereas an MSE VAE tends to learn latents whose interpolations correspond to Euclidean averages of pixel intensities,
         a Wasserstein VAE learns latents whose interpolations correspond to <em>McCann interpolations</em>:
       </p>
-      <BlockMath math={`P_t = ((1 - t) \\text{id} + t T)_{\\#} \\mu`} />
+      <BlockMath math={"P_t = \\bigl( (1 - t)\\, \\text{id} + t \\, T \\bigr)_{\\#} \\, \\mu"} />
       <p>
-        Here, <InlineMath math="T"/> is the optimal transport map from the input distribution to the reconstruction, and 
-        <InlineMath math="P_t"/> defines a geodesic in Wasserstein space.
+        Here, <InlineMath math={"T"} /> is the optimal transport map from the input distribution to the reconstruction, and
+        <InlineMath math={"P_t"} /> defines a geodesic in Wasserstein space.
       </p>
       <p>
         Consequently, latent interpolations between two samples decode to realistic intermediate shapes obtained by progressively
@@ -99,14 +108,14 @@ export default function WVAEMethodDescription() {
         This provides a more natural and semantically meaningful notion of reconstruction and interpolation, especially in
         image or distributional data.
       </p>
-      
+
       <p>
-        <strong>Why is this interesting?</strong> 
+        <strong>Why is this interesting?</strong>
         This approach makes VAEs aware of the geometry of the data distribution, yielding smoother and more interpretable latent spaces.
-        It also connects optimal transport theory with generative modeling, opening research opportunities in 
+        It also connects optimal transport theory with generative modeling, opening research opportunities in
         distribution alignment and shape-based losses.
       </p>
-      
+
       <p><strong>References and Further Reading:</strong></p>
       <ul style={{ textAlign: "left", display: "inline-block" }}>
         <li>Cuturi (2013): <em>Sinkhorn Distances: Lightspeed Computation of Optimal Transport</em>.</li>
