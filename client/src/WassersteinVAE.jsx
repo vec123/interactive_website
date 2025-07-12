@@ -25,13 +25,13 @@ export default function WVAEMethodDescription() {
       </p>
       <BlockMath math={"\\text{ELBO} = \\mathbb{E}_{q(z|x)} \\big[ \\log p(x|z) \\big] - \\mathrm{KL}\\big( q(z|x) \\| p(z) \\big)"} />
       <p>
-        The <strong>reconstruction loss</strong> in most VAEs is the Mean Squared Error (MSE):
+        The <strong>reconstruction loss</strong> in many VAEs is the Mean Squared Error (MSE):
       </p>
       <BlockMath math={"\\mathcal{L}_{\\text{rec}} = \\| x - \\hat{x} \\|_2^2"} />
       <p>
         This loss penalizes pointwise Euclidean deviations between the input and reconstruction.
         As a result, when interpolating between latent encodings of two training samples, the decoder will produce outputs that
-        are linear blends of the original shapes in Euclidean space.
+        are linear blends in Euclidean space.
       </p>
       <p>
         For example, interpolating between a Gaussian blob and a non-Gaussian lumpy shape will yield reconstructions that look
