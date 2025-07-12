@@ -16,8 +16,8 @@ export default function WVAEMethodDescription() {
       </p>
       <BlockMath math={"p(x) = \\int p(x|z) \\, p(z) \\, dz"} />
       <p>
-        where <InlineMath math={"z"} /> is a latent variable sampled from a prior, typically <InlineMath math={"\\mathcal{N}(0, I)"} />, and <InlineMath math={"p(x|z)"} /> 
-        is the decoder likelihood.
+        where <InlineMath math={"z"} /> is a latent variable sampled from a prior, typically <InlineMath math={"\\mathcal{N}(0, I)"} />
+        , and <InlineMath math={"p(x|z)"} /> is the decoder likelihood.
       </p>
 
       <p>
