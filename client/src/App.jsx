@@ -64,13 +64,12 @@ export default function App() {
           padding: "2rem 1rem",
         }}
       >
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "900px",
-            fontFamily: "Arial, sans-serif",
-          }}
-        >
+      <div
+        style={{
+          width: "100%",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
           {activeTab === "GPLVM" && (
             <>
               <GPLVMMethodDescription />
