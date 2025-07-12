@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 
-function LatentExplorer() {
+function GPLVMLatentExplorer() {
   const [latentPoints, setLatentPoints] = useState([]);
   const [skeletonData, setSkeletonData] = useState(null);
   const [axisRange, setAxisRange] = useState({

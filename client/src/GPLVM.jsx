@@ -1,7 +1,7 @@
 import React from "react";
 import { BlockMath, InlineMath } from "react-katex";
 
-export default function MethodDescription() {
+export default function GPLVMMethodDescription() {
   return (
     <div style={{ textAlign: "center", maxWidth: "900px", margin: "0 auto" }}>
       <h2>About the Method: Gaussian Process Latent Variable Models</h2>
