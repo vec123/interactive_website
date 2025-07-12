@@ -119,7 +119,7 @@ export default function WVAEMethodDescription() {
         <li>Genevay et al. (2018): <em>Learning Generative Models with Sinkhorn Divergences</em>.</li>
         <li>
           <a
-            href="https://arxiv.org/abs/1806.06607"
+            href="https://arxiv.org/abs/1711.01558"
             target="_blank"
             rel="noopener noreferrer"
           >
