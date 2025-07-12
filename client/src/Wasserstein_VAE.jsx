@@ -8,7 +8,6 @@ export default function WVAEMethodDescription() {
         textAlign: "center",
         maxWidth: "900px",
         margin: "0 auto",
-        fontFamily: "Arial, sans-serif",
       }}
     >
       <h2 style={{ textAlign: "center" }}>
@@ -22,7 +21,7 @@ export default function WVAEMethodDescription() {
       </p>
       <BlockMath math={"p(x) = \\int p(x|z) \\, p(z) \\, dz"} />
       <p>
-        where <InlineMath math={"z"} /> is a latent variable sampled from a prior, typically
+        where <InlineMath math={"z"} /> is a latent variable sampled from a prior, typically 
         <InlineMath math={"\\mathcal{N}(0, I)"} />, and <InlineMath math={"p(x|z)"} /> is the decoder likelihood.
       </p>
 
