@@ -1,15 +1,10 @@
 import React from "react";
 import { BlockMath, InlineMath } from "react-katex";
+import "./styles/ContentStyles.css";
 
 export default function WVAEMethodDescription() {
   return (
-    <div
-      style={{
-        textAlign: "center",
-        maxWidth: "900px",
-        margin: "0 auto",
-      }}
-    >
+    <div className="method-container">
       <h2 style={{ textAlign: "center" }}>
         About the Method: Variational Autoencoder with Sinkhorn Reconstruction Loss
       </h2>

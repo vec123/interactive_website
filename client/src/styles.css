@@ -1,0 +1,33 @@
+/* Consistent container for all method descriptions */
+.method-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+}
+
+/* Consistent heading styles */
+.method-container h2 {
+  font-size: 1.75rem;
+  margin: 1.5rem 0;
+  font-weight: bold;
+}
+
+.method-container h3 {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+/* Make ul consistently centered with left-aligned text */
+.method-container ul {
+  text-align: left;
+  display: inline-block;
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
+.method-container li {
+  margin: 0.5rem 0;
+}

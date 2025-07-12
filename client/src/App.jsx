@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 import GPLVMMethodDescription from "./GPLVM";
-import WVAEMethodDescription from "./Wasserstein_VAE";
+import WVAEMethodDescription from "./WassersteinVAE";
 import "katex/dist/katex.min.css";
+import "./styles/ContentStyles.css";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("GPLVM");
 
   return (
-    <div
-      style={{
-        // Make the WHOLE page content centered in a 900px box
-        maxWidth: "900px",
-        margin: "0 auto",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
+    <div style={{ maxWidth: "900px", margin: "0 auto", fontFamily: "Arial, sans-serif" }}>
       {/* Navigation Bar */}
       <nav
         style={{
@@ -54,12 +48,8 @@ export default function App() {
 
       {/* Content */}
       <div>
-        {activeTab === "GPLVM" && (
-          <GPLVMMethodDescription />
-        )}
-        {activeTab === "WassersteinVAE" && (
-          <WVAEMethodDescription />
-        )}
+        {activeTab === "GPLVM" && <GPLVMMethodDescription />}
+        {activeTab === "WassersteinVAE" && <WVAEMethodDescription />}
       </div>
     </div>
   );

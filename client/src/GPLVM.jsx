@@ -1,9 +1,10 @@
 import React from "react";
 import { BlockMath, InlineMath } from "react-katex";
+import "./styles/ContentStyles.css";
 
 export default function GPLVMMethodDescription() {
   return (
-    <div style={{ textAlign: "center", maxWidth: "900px", margin: "0 auto" }}>
+    <div className="method-container">
       <h2>About the Method: Gaussian Process Latent Variable Models</h2>
       <p>
         Here, we explore the fascinating world of <strong>Gaussian Processes (GPs)</strong>, a powerful framework for modeling functions.
