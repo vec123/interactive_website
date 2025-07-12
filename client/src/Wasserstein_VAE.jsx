@@ -6,7 +6,7 @@ export default function WVAEMethodDescription() {
   return (
     <div className="method-container">
       <h2>
-        About the Method: Variational Autoencoder with Sinkhorn Reconstruction Loss
+        About the Method: Variational Autoencoder with Optimal Transport Reconstruction Loss
       </h2>
 
       <p>
