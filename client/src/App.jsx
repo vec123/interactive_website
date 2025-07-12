@@ -1,10 +1,13 @@
-import GPLVMLatentExplorer from "./GPLVM_latent_explorer" ;
+import React, { useState } from "react";
+import GPLVMLatentExplorer from "./GPLVM_latent_explorer";
 import GPLVMMethodDescription from "./GPLVM";
-
 import WVAEMMethodDescription from "./Wasserstein_VAE";
 import "katex/dist/katex.min.css";
+
 function App() {
-return (
+  const [activeTab, setActiveTab] = useState("GPLVM");
+
+  return (
     <div>
       {/* Navigation Bar */}
       <nav style={{
@@ -46,12 +49,12 @@ return (
       <div>
         {activeTab === "GPLVM" && (
           <div>
-            <MethodDescription />
-            <LatentExplorer />
+            <GPLVMMethodDescription />
+            <GPLVMLatentExplorer />
           </div>
         )}
         {activeTab === "WassersteinVAE" && (
-          <WassersteinVAE />
+          <WVAEMMethodDescription />
         )}
       </div>
     </div>
