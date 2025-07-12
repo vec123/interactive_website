@@ -9,29 +9,24 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("GPLVM");
 
   return (
-    <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        padding: "2rem 1rem",
-      }}
-    >
-      <div
+    <main>
+      {/* Navigation Bar */}
+      <nav
         style={{
           width: "100%",
-          maxWidth: "900px",
-          fontFamily: "Arial, sans-serif",
+          background: "#f0f0f0",
+          borderBottom: "1px solid #ddd",
         }}
       >
-        {/* Navigation Bar */}
-        <nav
+        <div
           style={{
+            maxWidth: "900px",
+            margin: "0 auto",
             display: "flex",
             justifyContent: "center",
             gap: "2rem",
             padding: "1rem",
-            background: "#f0f0f0",
-            borderBottom: "1px solid #ddd",
+            fontFamily: "Arial, sans-serif",
           }}
         >
           <button
@@ -58,10 +53,24 @@ export default function App() {
           >
             Wasserstein VAE
           </button>
-        </nav>
+        </div>
+      </nav>
 
-        {/* Content */}
-        <div>
+      {/* Main Content */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2rem 1rem",
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "900px",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
           {activeTab === "GPLVM" && (
             <>
               <GPLVMMethodDescription />
