@@ -1,24 +1,31 @@
 import React, { useState } from "react";
-import GPLVMLatentExplorer from "./GPLVM_latent_explorer";
 import GPLVMMethodDescription from "./GPLVM";
-import WVAEMMethodDescription from "./Wasserstein_VAE";
+import WVAEMethodDescription from "./Wasserstein_VAE";
 import "katex/dist/katex.min.css";
 
-function App() {
+export default function App() {
   const [activeTab, setActiveTab] = useState("GPLVM");
 
   return (
-    <div>
+    <div
+      style={{
+        // Make the WHOLE page content centered in a 900px box
+        maxWidth: "900px",
+        margin: "0 auto",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
       {/* Navigation Bar */}
-      <nav style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "2rem",
-        padding: "1rem",
-        background: "#f0f0f0",
-        borderBottom: "1px solid #ddd",
-        fontFamily: "Arial, sans-serif"
-      }}>
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "2rem",
+          padding: "1rem",
+          background: "#f0f0f0",
+          borderBottom: "1px solid #ddd",
+        }}
+      >
         <button
           onClick={() => setActiveTab("GPLVM")}
           style={{
@@ -26,7 +33,7 @@ function App() {
             border: "none",
             background: activeTab === "GPLVM" ? "#ccc" : "transparent",
             cursor: "pointer",
-            fontWeight: activeTab === "GPLVM" ? "bold" : "normal"
+            fontWeight: activeTab === "GPLVM" ? "bold" : "normal",
           }}
         >
           GPLVM
@@ -38,7 +45,7 @@ function App() {
             border: "none",
             background: activeTab === "WassersteinVAE" ? "#ccc" : "transparent",
             cursor: "pointer",
-            fontWeight: activeTab === "WassersteinVAE" ? "bold" : "normal"
+            fontWeight: activeTab === "WassersteinVAE" ? "bold" : "normal",
           }}
         >
           Wasserstein VAE
@@ -48,17 +55,12 @@ function App() {
       {/* Content */}
       <div>
         {activeTab === "GPLVM" && (
-          <div>
-            <GPLVMMethodDescription />
-            <GPLVMLatentExplorer />
-          </div>
+          <GPLVMMethodDescription />
         )}
         {activeTab === "WassersteinVAE" && (
-          <WVAEMMethodDescription />
+          <WVAEMethodDescription />
         )}
       </div>
     </div>
   );
 }
-
-export default App;
