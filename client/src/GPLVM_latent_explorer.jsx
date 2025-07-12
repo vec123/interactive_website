@@ -193,4 +193,4 @@ function GPLVMLatentExplorer() {
   );
 }
 
-export default LatentExplorer;
+export default GPLVMLatentExplorer;
