@@ -58,11 +58,12 @@ export default function GPLVMMethodDescription() {
       <BlockMath math={`k(z, z') = \\langle \\varphi(z), \\varphi(z') \\rangle`} />
 
       <p>
-        The inner producs is a projection from one function to another. This appears also in Fourier transforms (where one projects to periodic basis functions) 
-        and many other formalisms. The frequency truncated Fourier transform has the reproducing property. 
-        This is related to convolution with the sinc kernel (which is equivalent to applying the truncated Fourier transform) and Paley-Wiener spaces
-        (ignore this, it is not important).
-        This reproducing property implies that any function in the space can be expressed as a linear combination of kernels evaluated at training points:
+        The kernel evaluates the inner product between feature representations of inputs. This measures their similarity in the RKHS. 
+        This appears also in Fourier transforms, where one computes the inner product between a function and complex exponentials, 
+        and many other formalisms. 
+        Side note (ignore, it is not important): The frequency truncated Fourier transform has the reproducing property. 
+        This is related to convolution with the sinc kernel (which is equivalent to applying the truncated Fourier transform) and Paley-Wiener spaces.
+        The reproducing property implies that any function in the space can be expressed as a linear combination of kernels evaluated at training points:
       </p>
 
       <BlockMath math={`f(z) = \\sum_i \\alpha_i \\; k(z_i, z)`} />
