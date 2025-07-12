@@ -5,7 +5,7 @@ import "./styles/ContentStyles.css";
 export default function WVAEMethodDescription() {
   return (
     <div className="method-container">
-      <h2 style={{ textAlign: "center" }}>
+      <h2>
         About the Method: Variational Autoencoder with Sinkhorn Reconstruction Loss
       </h2>
 
@@ -38,7 +38,7 @@ export default function WVAEMethodDescription() {
         like blurred mixtures rather than natural morphings.
       </p>
 
-      <h3 style={{ textAlign: "center" }}>Wasserstein Distance: A Geometric Measure</h3>
+      <h3>Wasserstein Distance: A Geometric Measure</h3>
       <p>
         The <strong>Wasserstein distance</strong>, in contrast, measures the minimal cost to transport mass from one distribution to another.
         This makes it sensitive to the geometry and support of the distributions.
@@ -56,7 +56,7 @@ export default function WVAEMethodDescription() {
         gradually shifts, rather than simply blending pixel intensities.
       </p>
 
-      <h3 style={{ textAlign: "center" }}>The Sinkhorn Algorithm</h3>
+      <h3>The Sinkhorn Algorithm</h3>
       <p>
         Computing the exact Wasserstein distance requires solving a linear program, which is computationally expensive.
         The <strong>Sinkhorn algorithm</strong> provides an efficient approximation by introducing entropy regularization, 
@@ -79,7 +79,7 @@ export default function WVAEMethodDescription() {
         the transport matrix. Other approaches directly learn the potentials between two distributions as neural networks, using the Sinkhorn algorithm to guide training.
       </p>
 
-      <h3 style={{ textAlign: "center" }}>Variational Autoencoder with Wasserstein (Sinkhorn) Reconstruction Loss</h3>
+      <h3>Variational Autoencoder with Wasserstein (Sinkhorn) Reconstruction Loss</h3>
       <p>
         In our method, we replace the standard MSE reconstruction loss by a <strong>Sinkhorn Wasserstein distance</strong> between the
         input data and the reconstructed output:
@@ -112,7 +112,7 @@ export default function WVAEMethodDescription() {
       </p>
 
       <p><strong>References and Further Reading:</strong></p>
-      <ul style={{ textAlign: "left", display: "inline-block" }}>
+      <ul>
         <li>Cuturi (2013): <em>Sinkhorn Distances: Lightspeed Computation of Optimal Transport</em>.</li>
         <li>Villani (2009): <em>Optimal Transport: Old and New</em>.</li>
         <li>Arjovsky et al. (2017): <em>Wasserstein GAN</em>.</li>
