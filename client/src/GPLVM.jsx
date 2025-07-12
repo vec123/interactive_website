@@ -12,6 +12,8 @@ export default function MethodDescription() {
         Our data will be a sequence of motion frames, where each frame is a 36 dimensional vector (i.e. 12 joints, 3 coordinates).
         Gaussian Processes are cool because they allow building non-parametric model and doing principled inference on functions directly from observations. 
         This makes them flexible models with many applications, among which, data-imputation, dimensionality reduction, GP state space models and more.
+        A downside is their computational complexity, which scales cubically with the number of data points.
+        Methods which scale better include sparse approximations, inducing points, and variational inference techniques.
         The interactive visualization demonstrates a{" "}
         <strong>Bayesian Gaussian Process Latent Variable Model (bGPLVM)</strong>.
         A GPLVM is a generative probabilistic model that relates a low-dimensional latent space to high-dimensional observed data
