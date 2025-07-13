@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import GPLVMMethodDescription from "./GPLVM";
 import WVAEMethodDescription from "./WassersteinVAE";
-import GPLVMLatentExplorer from "./GPLVMLatentExplorer";
+import LatentExplorer from "./LatentExplorer";
 import "katex/dist/katex.min.css";
 import "./styles/ContentStyles.css";
 
@@ -64,19 +64,37 @@ export default function App() {
           padding: "2rem 1rem",
         }}
       >
-      <div
-        style={{
-          width: "100%",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
+        <div
+          style={{
+            width: "100%",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
           {activeTab === "GPLVM" && (
             <>
               <GPLVMMethodDescription />
-              <GPLVMLatentExplorer />
+              <LatentExplorer
+                modelId="gplvm"
+                modelType="skeleton"
+                description="The GPLVM is applied to motion data of five movements: walking, running, jumping, doing a cartwheel, and punching. Hover over the latent space to see the corresponding frame."
+              />
             </>
           )}
-          {activeTab === "WassersteinVAE" && <WVAEMethodDescription />}
+         {activeTab === "WassersteinVAE" && (
+                <>
+                   <WVAEMethodDescription />
+                    <LatentExplorer
+                    modelId="wasserstein_vae"
+                    modelType="image"
+                    description="Wasserstein VAE: latent space and reconstruction."
+                    />
+                    <LatentExplorer
+                    modelId="vae"
+                    modelType="image"
+                    description="Standard VAE (MSE loss): latent space and reconstruction."
+                    />
+                </>
+                )}
         </div>
       </div>
     </main>

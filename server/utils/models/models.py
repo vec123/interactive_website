@@ -13,6 +13,10 @@ from gpytorch.kernels import ScaleKernel, RBFKernel
 from gpytorch.distributions import MultivariateNormal
 import numpy as np
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
 def _init_pca(Y, latent_dim):
     U, S, V = torch.pca_lowrank(Y, q = latent_dim)
     return torch.nn.Parameter(torch.matmul(Y, V[:,:latent_dim]))
@@ -204,3 +208,40 @@ class badly_def_model_1(gpytorch.models.ApproximateGP):
         covar_z = self.covar_module(z)
         return gpytorch.distributions.MultivariateNormal(mean_z, covar_z)
 
+class ConvVAE(nn.Module):
+    def __init__(self, latent_dim=2):
+        super().__init__()
+        self.latent_dim = latent_dim
+        self.enc_conv1 = nn.Conv2d(1, 32, 4, stride=2, padding=1)
+        self.enc_conv2 = nn.Conv2d(32, 64, 4, stride=2, padding=1)
+        self.enc_fc_mu = nn.Linear(64*7*7, latent_dim)
+        self.enc_fc_logvar = nn.Linear(64*7*7, latent_dim)
+        self.dec_fc = nn.Linear(latent_dim, 64*7*7)
+        self.dec_deconv1 = nn.ConvTranspose2d(64,32,4,2,1)
+        self.dec_deconv2 = nn.ConvTranspose2d(32,1,4,2,1)
+
+    def encode(self, x):
+        x = F.relu(self.enc_conv1(x))
+        x = F.relu(self.enc_conv2(x))
+        x = x.view(x.size(0),-1)
+        mu = self.enc_fc_mu(x)
+        logvar = self.enc_fc_logvar(x)
+        return mu, logvar
+
+    def reparameterize(self, mu, logvar):
+        std = torch.exp(0.5*logvar)
+        eps = torch.randn_like(std)
+        return mu + eps*std
+
+    def decode(self, z):
+        x = F.relu(self.dec_fc(z))
+        x = x.view(-1,64,7,7)
+        x = F.relu(self.dec_deconv1(x))
+        x = torch.sigmoid(self.dec_deconv2(x))
+        return x
+
+    def forward(self, x):
+        mu, logvar = self.encode(x)
+        z = self.reparameterize(mu, logvar)
+        recon = self.decode(z)
+        return recon, z, mu, logvar
